@@ -41,9 +41,33 @@ const voiceFiles = {
     ruler: 'assets/audio/words/ruler.mp3',
     rubber: 'assets/audio/words/rubber.mp3',
     notebook: 'assets/audio/words/notebook.mp3',
-    crayon: 'assets/audio/words/crayon.mp3',
-    scissors: 'assets/audio/words/scissors.mp3',
-    sharpener: 'assets/audio/words/sharpener.mp3'
+    crayon: 'assets%20audio%20words/crayon.mp3.mp3',
+    scissors: 'assets%20audio%20words/scissors.mp3.mp3',
+    sharpener: 'assets/audio/words/sharpener.mp3',
+    folder: 'folder.mp3.mp3',
+    bookcase: 'bookcase.mp3.mp3',
+    door: 'door.mp3.mp3',
+    window: 'window.mp3.mp3',
+    yellow: 'assets%20audio%20colours/yellow.mp3.mp3',
+    blue: 'assets%20audio%20colours/blue.mp3.mp3',
+    brown: 'assets%20audio%20colours/brown.mp3.mp3',
+    black: 'assets%20audio%20colours/black.mp3.mp3',
+    white: 'assets%20audio%20colours/white.mp3.mp3',
+    green: 'assets%20audio%20colours/green.mp3.mp3',
+    purple: 'assets%20audio%20colours/purple.mp3.mp3',
+    red: 'assets%20audio%20colours/red.mp3.mp3',
+    orange: 'assets%20audio%20colours/orange.mp3.mp3',
+    grey: 'assets%20audio%20colours/grey.mp3.mp3',
+    one: 'assets%20audio%20numbers/one.mp3.mp3',
+    two: 'assets%20audio%20numbers/two.mp3.mp3',
+    three: 'assets%20audio%20numbers/three.mp3.mp3',
+    four: 'assets%20audio%20numbers/four.mp3.mp3',
+    five: 'assets%20audio%20numbers/five.mp3.mp3',
+    six: 'assets%20audio%20numbers/six.mp3.mp3',
+    seven: 'assets%20audio%20numbers/seven.mp3.mp3',
+    eight: 'assets%20audio%20numbers/eight.mp3.mp3',
+    nine: 'assets%20audio%20numbers/nine.mp3.mp3',
+    ten: 'assets%20audio%20numbers/ten.mp3.mp3'
   },
   tapFind: {
     pen: 'assets/audio/tap-find/find-the-pen.mp3',
@@ -76,6 +100,19 @@ const voiceFiles = {
     youDidIt: 'assets/audio/feedback/you-did-it.mp3',
     missionComplete: 'assets/audio/feedback/mission-complete.mp3',
     newBest: 'assets/audio/feedback/new-best.mp3'
+  },
+  sentences: {
+    rubber: 'make%20a%20sentence/audio/its-a-rubber.mp3.mp3',
+    apple: 'make%20a%20sentence/audio/its-an-apple.mp3.mp3',
+    redPencil: 'make%20a%20sentence/audio/its-a-red-pencil.mp3.mp3',
+    orangeRuler: 'make%20a%20sentence/audio/its-an-orange-ruler.mp3.mp3',
+    greenBagNotebook: 'make%20a%20sentence/audio/its-a-green-bag-and-a-yellow-notebook.mp3.mp3',
+    sharpener: 'make%20a%20sentence/audio/this-is-a-sharpener.mp3.mp3',
+    brownCrayon: 'make%20a%20sentence/audio/this-is-a-brown-crayon.mp3.mp3',
+    folder: 'make%20a%20sentence/audio/this-is-a-folder.mp3.mp3',
+    door: 'make%20a%20sentence/audio/this-is-a-door.mp3.mp3',
+    window: 'make%20a%20sentence/audio/this-is-a-window.mp3.mp3',
+    bookcase: 'make%20a%20sentence/audio/this-is-a-bookcase.mp3.mp3'
   }
 };
 
@@ -100,19 +137,48 @@ let colourFeedback = '';
 let colourMissionComplete = false;
 let colourAnnouncedRound = -1;
 
-const wordRounds = [
-  { word: 'PEN', image: 'pen.png' }, { word: 'BAG', image: 'bag.png' },
-  { word: 'BOOK', image: 'book.png' }, { word: 'PENCIL', image: 'pencil.png' },
-  { word: 'RULER', image: 'ruler.png' }, { word: 'RUBBER', image: 'rubber.png' },
-  { word: 'CRAYON', image: 'crayon.png' }, { word: 'NOTEBOOK', image: 'notebook.png' },
-  { word: 'SCISSORS', image: 'scissors.png' }, { word: 'SHARPENER', image: 'sharpener.png' }
+const schoolWordRounds = [
+  { word: 'PEN', type: 'object', image: 'pen.png' }, { word: 'BAG', type: 'object', image: 'bag.png' },
+  { word: 'BOOK', type: 'object', image: 'book.png' }, { word: 'PENCIL', type: 'object', image: 'pencil.png' },
+  { word: 'RULER', type: 'object', image: 'ruler.png' }, { word: 'RUBBER', type: 'object', image: 'rubber.png' },
+  { word: 'CRAYON', type: 'object', image: 'crayon.png' }, { word: 'NOTEBOOK', type: 'object', image: 'notebook.png' },
+  { word: 'SCISSORS', type: 'object', image: 'scissors.png' }, { word: 'SHARPENER', type: 'object', image: 'sharpener.png' },
+  { word: 'FOLDER', type: 'object', image: 'folder.png.png' }, { word: 'BOOKCASE', type: 'object', image: 'bookcase.png.png' },
+  { word: 'DOOR', type: 'object', image: 'door.png.png' }, { word: 'WINDOW', type: 'object', image: 'window.png.png' }
 ];
+const colourWordRounds = [
+  { word: 'YELLOW', type: 'colour', colour: '#f4cf42' }, { word: 'BLUE', type: 'colour', colour: '#398bd2' },
+  { word: 'BROWN', type: 'colour', colour: '#8a4f2d' }, { word: 'BLACK', type: 'colour', colour: '#20252b' },
+  { word: 'WHITE', type: 'colour', colour: '#ffffff' }, { word: 'GREEN', type: 'colour', colour: '#4eb774' },
+  { word: 'PURPLE', type: 'colour', colour: '#874dcc' }, { word: 'RED', type: 'colour', colour: '#ed5a54' },
+  { word: 'ORANGE', type: 'colour', colour: '#f28b32' }, { word: 'GREY', type: 'colour', colour: '#8d969d' }
+];
+const numberWordRounds = [
+  { word: 'ONE', type: 'number', digit: '1' }, { word: 'TWO', type: 'number', digit: '2' },
+  { word: 'THREE', type: 'number', digit: '3' }, { word: 'FOUR', type: 'number', digit: '4' },
+  { word: 'FIVE', type: 'number', digit: '5' }, { word: 'SIX', type: 'number', digit: '6' },
+  { word: 'SEVEN', type: 'number', digit: '7' }, { word: 'EIGHT', type: 'number', digit: '8' },
+  { word: 'NINE', type: 'number', digit: '9' }, { word: 'TEN', type: 'number', digit: '10' }
+];
+const mixWordNames = ['SHARPENER', 'SCISSORS', 'NOTEBOOK', 'BOOKCASE', 'FOLDER', 'WINDOW', 'PURPLE', 'ORANGE', 'YELLOW', 'BROWN', 'THREE', 'FIVE', 'SEVEN', 'EIGHT', 'NINE'];
+const allWordRounds = [...schoolWordRounds, ...colourWordRounds, ...numberWordRounds];
+const mixWordRounds = mixWordNames.map(word => allWordRounds.find(round => round.word === word));
+const wordBlockConfig = {
+  school: { title: 'School & Classroom', subtitle: '14 classroom words', rounds: schoolWordRounds },
+  colours: { title: 'Colours', subtitle: '10 colour words', rounds: colourWordRounds },
+  numbers: { title: 'Numbers 1–10', subtitle: '10 number words', rounds: numberWordRounds },
+  mix: { title: 'Mix Challenge', subtitle: '15 mixed words', rounds: mixWordRounds }
+};
+let selectedWordBlock = null;
+let wordRounds = [...schoolWordRounds];
 let wordRound = 0;
 let wordLetters = [];
 let wordBank = [];
 let usedLetterIds = [];
 let wordCompleted = false;
+let wordSuccessReady = false;
 let wordMissionComplete = false;
+let wordResetting = false;
 let wordHintVisible = true;
 let wordHintTimer = null;
 let wordAnnouncedRound = -1;
@@ -148,6 +214,124 @@ let pairFlipped = [];
 let pairMatched = [];
 let pairBusy = false;
 let announcementToken = 0;
+
+const sentenceRounds = [
+  { id: 'rubber', text: 'It’s a rubber.', words: ['IT’S', 'A', 'RUBBER'], clues: [{ image: 'rubber.png', label: 'rubber' }] },
+  { id: 'apple', text: 'It’s an apple.', words: ['IT’S', 'AN', 'APPLE'], clues: [{ image: 'apple.png.png', label: 'apple' }] },
+  { id: 'redPencil', text: 'It’s a red pencil.', words: ['IT’S', 'A', 'RED', 'PENCIL'], clues: [{ image: 'pencil.png', colour: 'red', label: 'red pencil' }] },
+  { id: 'orangeRuler', text: 'It’s an orange ruler.', words: ['IT’S', 'AN', 'ORANGE', 'RULER'], clues: [{ image: 'ruler.png', colour: 'orange', label: 'orange ruler' }] },
+  { id: 'sharpener', text: 'This is a sharpener.', words: ['THIS', 'IS', 'A', 'SHARPENER'], clues: [{ image: 'sharpener.png', label: 'sharpener' }] },
+  { id: 'brownCrayon', text: 'This is a brown crayon.', words: ['THIS', 'IS', 'A', 'BROWN', 'CRAYON'], clues: [{ image: 'crayon.png', colour: 'brown', label: 'brown crayon' }] },
+  { id: 'folder', text: 'This is a folder.', words: ['THIS', 'IS', 'A', 'FOLDER'], clues: [{ image: 'folder.png.png', label: 'folder' }] },
+  { id: 'door', text: 'This is a door.', words: ['THIS', 'IS', 'A', 'DOOR'], clues: [{ image: 'door.png.png', label: 'door' }] },
+  { id: 'window', text: 'This is a window.', words: ['THIS', 'IS', 'A', 'WINDOW'], clues: [{ image: 'window.png.png', label: 'window' }] },
+  { id: 'bookcase', text: 'This is a bookcase.', words: ['THIS', 'IS', 'A', 'BOOKCASE'], clues: [{ image: 'bookcase.png.png', label: 'bookcase' }] },
+  { id: 'greenBagNotebook', text: 'It’s a green bag and a yellow notebook.', words: ['IT’S', 'A', 'GREEN', 'BAG', 'AND', 'A', 'YELLOW', 'NOTEBOOK'], clues: [{ image: 'bag.png', colour: 'green', label: 'green bag' }, { image: 'notebook.png', colour: 'yellow', label: 'yellow notebook' }] }
+];
+let sentenceOrder = [];
+let sentenceRound = 0;
+let sentenceTokens = [];
+let sentenceSlots = [];
+let sentenceSolved = false;
+let sentenceWrong = false;
+let sentenceSuccessReady = false;
+let sentenceMissionComplete = false;
+let sentencePlacementHistory = [];
+const previousWordOrders = new Map();
+
+const finalColourChoices = [
+  { id: 'yellow', colour: '#f4cf42' }, { id: 'blue', colour: '#398bd2' },
+  { id: 'brown', colour: '#8a4f2d' }, { id: 'green', colour: '#4eb774' },
+  { id: 'purple', colour: '#874dcc' }, { id: 'orange', colour: '#f28b32' }
+];
+const finalMissionQuestions = [
+  { id: 'q1', type: 'listen-picture', category: 'listening', prompt: 'Listen and choose the picture.', audio: 'SHARPENER', choices: [
+    { id: 'sharpener', image: 'sharpener.png' }, { id: 'pencil', image: 'pencil.png' }, { id: 'ruler', image: 'ruler.png' }, { id: 'rubber', image: 'rubber.png' }
+  ], correctAnswer: 'sharpener' },
+  { id: 'q2', type: 'build-word', category: 'words', prompt: 'Build the word.', target: 'WINDOW', image: 'window.png.png', correctAnswer: 'WINDOW' },
+  { id: 'q3', type: 'sentence', category: 'sentences', prompt: 'Make the sentence.', target: ['IT’S', 'A', 'RED', 'PENCIL'], clues: [{ image: 'pencil.png', colour: 'red', label: 'red pencil' }], correctAnswer: ['IT’S', 'A', 'RED', 'PENCIL'] },
+  { id: 'q4', type: 'listen-colour', category: 'coloursNumbers', prompt: 'Listen and choose the colour.', audio: 'PURPLE', choices: finalColourChoices, correctAnswer: 'purple' },
+  { id: 'q5', type: 'reading-picture', category: 'reading', prompt: 'This is a bookcase.', choices: [
+    { id: 'bookcase', image: 'bookcase.png.png' }, { id: 'door', image: 'door.png.png' }, { id: 'book', image: 'book.png' }, { id: 'bag', image: 'bag.png' }
+  ], correctAnswer: 'bookcase' },
+  { id: 'q6', type: 'build-word', category: 'words', prompt: 'Build the number word.', target: 'EIGHT', digit: '8', correctAnswer: 'EIGHT' },
+  { id: 'q7', type: 'listen-picture', category: 'listening', prompt: 'Listen and choose the picture.', audio: 'NOTEBOOK', choices: [
+    { id: 'notebook', image: 'notebook.png' }, { id: 'book', image: 'book.png' }, { id: 'folder', image: 'folder.png.png' }, { id: 'bag', image: 'bag.png' }
+  ], correctAnswer: 'notebook' },
+  { id: 'q8', type: 'sentence', category: 'sentences', prompt: 'Make the sentence.', target: ['THIS', 'IS', 'A', 'FOLDER'], clues: [{ image: 'folder.png.png', label: 'folder' }], correctAnswer: ['THIS', 'IS', 'A', 'FOLDER'] },
+  { id: 'q9', type: 'listen-number', category: 'coloursNumbers', prompt: 'Listen and choose the number.', audio: 'SEVEN', choices: ['3', '5', '7', '9'], correctAnswer: '7' },
+  { id: 'q10', type: 'reading-picture', category: 'reading', prompt: 'It’s an orange ruler.', choices: [
+    { id: 'orange-ruler', image: 'ruler.png', colour: 'orange' }, { id: 'red-pencil', image: 'pencil.png', colour: 'red' },
+    { id: 'green-bag', image: 'bag.png', colour: 'green' }, { id: 'yellow-notebook', image: 'notebook.png', colour: 'yellow' }
+  ], correctAnswer: 'orange-ruler' },
+  { id: 'q11', type: 'build-word', category: 'words', prompt: 'Build the word.', target: 'SHARPENER', image: 'sharpener.png', correctAnswer: 'SHARPENER' },
+  { id: 'q12', type: 'listen-colour', category: 'coloursNumbers', prompt: 'Listen and choose the colour.', audio: 'BROWN', choices: finalColourChoices, correctAnswer: 'brown' },
+  { id: 'q13', type: 'sentence', category: 'sentences', prompt: 'Make the sentence.', target: ['IT’S', 'A', 'GREEN', 'BAG', 'AND', 'A', 'YELLOW', 'NOTEBOOK'], clues: [
+    { image: 'bag.png', colour: 'green', label: 'green bag' }, { image: 'notebook.png', colour: 'yellow', label: 'yellow notebook' }
+  ], correctAnswer: ['IT’S', 'A', 'GREEN', 'BAG', 'AND', 'A', 'YELLOW', 'NOTEBOOK'] },
+  { id: 'q14', type: 'listen-picture', category: 'listening', prompt: 'Listen and choose the picture.', audio: 'BOOKCASE', choices: [
+    { id: 'bookcase', image: 'bookcase.png.png' }, { id: 'door', image: 'door.png.png' }, { id: 'window', image: 'window.png.png' }, { id: 'folder', image: 'folder.png.png' }
+  ], correctAnswer: 'bookcase' },
+  { id: 'q15', type: 'reading-group', category: 'reading', prompt: 'There is a pencil, a ruler and a rubber.', choices: [
+    { id: 'pencil-ruler-rubber', images: ['pencil.png', 'ruler.png', 'rubber.png'] },
+    { id: 'pencil-ruler-crayon', images: ['pencil.png', 'ruler.png', 'crayon.png'] },
+    { id: 'pen-ruler-rubber', images: ['pen.png', 'ruler.png', 'rubber.png'] }
+  ], correctAnswer: 'pencil-ruler-rubber' }
+];
+const finalCategoryLabels = {
+  words: 'WORDS', listening: 'LISTENING', coloursNumbers: 'COLOURS & NUMBERS', sentences: 'SENTENCES', reading: 'READING'
+};
+let finalQuestionIndex = 0;
+let finalScore = 0;
+let finalBreakdown = {};
+let finalResults = [];
+let finalSubmitted = false;
+let finalSelection = null;
+let finalChoiceOrder = [];
+let finalTokens = [];
+let finalAnswerIds = [];
+let finalAnnouncedQuestion = -1;
+let finalIntroVisible = false;
+
+const currentFinalQuestion = () => finalMissionQuestions[finalQuestionIndex];
+const finalTokenValues = () => finalAnswerIds.map(id => finalTokens.find(token => token.id === id)?.value || '');
+const finalShuffleTokens = (values, prefix) => {
+  const correct = values.join('|');
+  let result = [];
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    result = shuffle(values.map((value, index) => ({ id: `${prefix}-${index}`, value })));
+    if (result.map(token => token.value).join('|') !== correct) return result;
+  }
+  result = values.map((value, index) => ({ id: `${prefix}-${index}`, value }));
+  result.push(result.shift());
+  return result;
+};
+
+function getFinalResult(score) {
+  if (score <= 8) return { band: 'retry', grade: null, title: 'TRY AGAIN', message: 'Let’s try again!', image: 'fox-try-again.png.png', replayLabel: 'TRY AGAIN' };
+  if (score <= 13) return { band: 'grade-4', grade: '4', title: 'GRADE 4', message: 'Great work!', image: 'fox-grade-4.png.png', replayLabel: 'PLAY AGAIN' };
+  return { band: 'grade-5', grade: '5', title: 'GRADE 5', message: 'Fantastic work!', image: 'fox-grade-5.png.png', replayLabel: 'PLAY AGAIN' };
+}
+
+const prepareFinalQuestion = () => {
+  const question = currentFinalQuestion();
+  finalSubmitted = false;
+  finalSelection = null;
+  finalAnswerIds = [];
+  finalChoiceOrder = question.choices ? shuffle(question.choices) : [];
+  finalTokens = question.type === 'build-word'
+    ? finalShuffleTokens([...question.target], question.id)
+    : question.type === 'sentence' ? finalShuffleTokens(question.target, question.id) : [];
+  finalAnnouncedQuestion = -1;
+};
+
+const resetFinalMission = () => {
+  finalQuestionIndex = 0;
+  finalScore = 0;
+  finalBreakdown = Object.fromEntries(Object.keys(finalCategoryLabels).map(key => [key, 0]));
+  finalResults = [];
+  prepareFinalQuestion();
+};
 
 const successMessages = ['Great!', 'Super!', 'Well done!'];
 
@@ -317,6 +501,12 @@ const voiceController = (() => {
 
   const playEntry = async (entry, token) => {
     if (!entry || token !== requestId || !soundEnabled) return;
+    if (!entry.file) {
+      document.documentElement.dataset.voiceMode = 'fallback';
+      document.documentElement.dataset.voiceSource = 'speech-synthesis';
+      await speakFallback(entry.fallback);
+      return;
+    }
     const exists = await fileExists(entry.file);
     if (token !== requestId || !soundEnabled) return;
     if (!exists) {
@@ -374,7 +564,7 @@ const voiceController = (() => {
   return { play: entry => playSequence([entry]), playSequence, stop };
 })();
 
-const wordVoice = word => ({ file: voiceFiles.words[word.toLowerCase()], fallback: word });
+const wordVoice = word => ({ file: voiceFiles.words[word.toLowerCase()] || '', fallback: word });
 const findVoice = word => ({ file: voiceFiles.tapFind[word.toLowerCase()], fallback: `Find the ${word}` });
 const colourVoice = item => ({ file: item.voiceFile, fallback: `Paint the ${item.word} ${item.correctColor}` });
 const feedbackVoice = key => {
@@ -384,6 +574,7 @@ const feedbackVoice = key => {
   }[key];
   return { file: voiceFiles.feedback[key], fallback };
 };
+const sentenceVoice = round => ({ file: voiceFiles.sentences[round.id], fallback: round.text });
 const cancelPendingAnnouncement = () => { announcementToken += 1; };
 const playWord = word => voiceController.play(wordVoice(word));
 const playFindInstruction = word => voiceController.play(findVoice(word));
@@ -419,6 +610,7 @@ const scheduleWordHintToggle = () => {
 const startWordHintCycle = () => {
   wordHintVisible = true;
   applyWordHintVisibility();
+  if (currentWordRound().type !== 'object') return;
   scheduleWordHintToggle();
 };
 
@@ -427,7 +619,7 @@ const formatTime = milliseconds => {
   return `${String(Math.floor(totalSeconds / 60)).padStart(2, '0')}:${String(totalSeconds % 60).padStart(2, '0')}`;
 };
 
-const getBestTime = game => Number(localStorage.getItem(gameModeConfig[game].bestKey) || 0);
+const getBestTime = game => Number(gameModeConfig[game] ? localStorage.getItem(gameModeConfig[game].bestKey) || 0 : 0);
 const currentElapsedTime = () => timeChallenge.phase === 'running'
   ? timeChallenge.elapsedMs + performance.now() - timeChallenge.startedAt
   : timeChallenge.elapsedMs;
@@ -608,6 +800,14 @@ const completionPanel = ({ message, replayId, nextScreen }) => {
 const setScreen = screen => {
   leaveGameMode();
   currentScreen = screen;
+  if (screen === 'word') selectedWordBlock = null;
+  if (screen === 'sentence') {
+    resetSentenceMission();
+    musicController.play();
+  }
+  if (screen === 'final') {
+    finalIntroVisible = true;
+  }
   document.querySelectorAll('[data-screen]').forEach(button => button.classList.toggle('active', button.dataset.screen === screen));
   render();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -615,14 +815,57 @@ const setScreen = screen => {
 
 const currentWordRound = () => wordRounds[wordRound % wordRounds.length];
 const currentFindRound = () => findRounds[findRound % findRounds.length];
+const currentSentenceRound = () => sentenceRounds[sentenceOrder[sentenceRound]];
 
-const resetWordRound = () => {
+const shuffledSentenceWords = round => {
+  const correct = round.words.join('|');
+  const previous = previousWordOrders.get(round.id);
+  let result = [];
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    result = shuffle(round.words.map((word, index) => ({ id: `${round.id}-${index}`, word })));
+    const signature = result.map(item => item.word).join('|');
+    if (signature !== correct && signature !== previous) break;
+  }
+  if (result.map(item => item.word).join('|') === correct || result.map(item => item.word).join('|') === previous) {
+    result = round.words.map((word, index) => ({ id: `${round.id}-${index}`, word }));
+    result.push(result.shift());
+  }
+  previousWordOrders.set(round.id, result.map(item => item.word).join('|'));
+  return result;
+};
+
+const resetSentenceRound = () => {
+  const round = currentSentenceRound();
+  sentenceTokens = shuffledSentenceWords(round);
+  sentenceSlots = Array(round.words.length).fill(null);
+  sentenceSolved = false;
+  sentenceWrong = false;
+  sentenceSuccessReady = false;
+  sentencePlacementHistory = [];
+};
+
+function resetSentenceMission() {
+  sentenceOrder = sentenceRounds.map((_, index) => index);
+  sentenceRound = 0;
+  sentenceMissionComplete = false;
+  resetSentenceRound();
+}
+
+const resetWordRound = (avoidBankOrder = '') => {
   const word = currentWordRound().word;
   wordLetters = [];
   usedLetterIds = [];
   wordCompleted = false;
+  wordSuccessReady = false;
+  wordResetting = false;
   wordHintVisible = true;
-  wordBank = shuffle([...word].map((letter, index) => ({ letter, id: `${wordRound}-${index}` })));
+  const source = [...word].map((letter, index) => ({ letter, id: `${wordRound}-${index}` }));
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    wordBank = shuffle(source);
+    const bankOrder = wordBank.map(item => item.letter).join('');
+    if (bankOrder !== word && bankOrder !== avoidBankOrder) return;
+  }
+  wordBank = [...source.slice(1), source[0]];
 };
 
 const resetFindRound = () => {
@@ -644,6 +887,8 @@ const resetPairSet = () => {
 
 const resetMission = game => {
   if (game === 'word') {
+    const block = wordBlockConfig[selectedWordBlock] || wordBlockConfig.school;
+    wordRounds = selectedWordBlock === 'school' ? [...block.rounds] : shuffle(block.rounds);
     wordRound = 0;
     wordAnnouncedRound = -1;
     wordMissionComplete = false;
@@ -690,17 +935,34 @@ const startGameMode = (game, mode) => {
 
 const restartCurrentGame = game => startGameMode(game, activeGameMode || 'normal');
 
+const renderWordBlockChoice = () => {
+  main.innerHTML = `<div class="game-board word-category-screen">
+    ${screenHead('Build a Word', 'Choose a word block to practise.', '')}
+    <section class="word-category-panel" aria-labelledby="wordCategoryTitle">
+      <div class="word-category-intro"><img src="assets%20images%20fox/Fox-happy.jpg" alt="Smiling fox"><div><h2 id="wordCategoryTitle">CHOOSE YOUR WORDS</h2><p>Pick one block. You can return here at any time.</p></div></div>
+      <div class="word-category-grid">
+        <button class="word-category-card school-block" data-word-block="school" aria-label="Play School and Classroom"><img class="word-category-cover" src="asset%20images%20scenes/build-school-classroom.png.png" alt=""><span class="word-category-play">PLAY</span></button>
+        <button class="word-category-card colours-block" data-word-block="colours" aria-label="Play Colours"><img class="word-category-cover" src="asset%20images%20scenes/build-colours.png.png" alt=""><span class="word-category-play">PLAY</span></button>
+        <button class="word-category-card numbers-block" data-word-block="numbers" aria-label="Play Numbers 1 to 10"><img class="word-category-cover" src="asset%20images%20scenes/build-numbers.png.png" alt=""><span class="word-category-play">PLAY</span></button>
+        <button class="word-category-card mix-block" data-word-block="mix" aria-label="Play Mix Challenge"><img class="word-category-cover" src="asset%20images%20scenes/build-mix-challenge.png.png" alt=""><span class="word-category-play">PLAY</span></button>
+      </div>
+    </section>
+  </div>`;
+};
+
 const renderModeChoice = game => {
   const config = gameModeConfig[game];
   const best = getBestTime(game);
+  const wordBlock = game === 'word' ? wordBlockConfig[selectedWordBlock] : null;
   main.innerHTML = `<div class="game-board mode-choice-screen">
-    ${screenHead(config.title, 'Choose how you would like to play.', '')}
+    ${screenHead(config.title, wordBlock ? `${wordBlock.title} · ${wordBlock.subtitle}` : 'Choose how you would like to play.', '')}
     <div class="mode-choice-panel">
       <div class="mode-choice-intro"><img src="assets%20images%20fox/Fox-happy.jpg" alt="Smiling fox"><div><h2>Ready for a mission?</h2><p>Play calmly, or try to beat your own best time.</p></div></div>
       <div class="mode-choice-grid">
         <button class="mode-choice normal-mode" data-game="${game}" data-game-mode="normal"><span class="mode-icon" aria-hidden="true">★</span><strong>NORMAL MODE</strong><small>Play with no timer</small><em>PLAY</em></button>
         <button class="mode-choice timed-mode" data-game="${game}" data-game-mode="timed"><span class="mode-icon" aria-hidden="true">◷</span><strong>BEAT YOUR BEST!</strong><small>${best ? `Best: ${formatTime(best)}` : 'Set your first record!'}</small><em>TIME CHALLENGE</em></button>
       </div>
+      ${wordBlock ? '<button class="secondary-btn choose-words-btn" id="wordChooseWords">CHOOSE OTHER WORDS</button>' : ''}
     </div>
   </div>`;
 };
@@ -708,11 +970,14 @@ const renderModeChoice = game => {
 function render() {
   document.body.classList.toggle('is-home', currentScreen === 'home');
   if (currentScreen === 'home') renderHome();
-  if (gameModeConfig[currentScreen] && !activeGameMode) renderModeChoice(currentScreen);
+  if (currentScreen === 'word' && !selectedWordBlock) renderWordBlockChoice();
+  else if (gameModeConfig[currentScreen] && !activeGameMode) renderModeChoice(currentScreen);
   else if (currentScreen === 'word') renderWord();
   else if (currentScreen === 'colour') renderColour();
   else if (currentScreen === 'find') renderFind();
   else if (currentScreen === 'pairs') renderPairs();
+  else if (currentScreen === 'sentence') renderSentence();
+  else if (currentScreen === 'final') renderFinalMission();
   if (currentScreen === 'backpack') renderBackpack();
 }
 
@@ -729,28 +994,40 @@ function renderHome() {
       <button class="quest-card card-colour" data-screen="colour"><span class="card-copy"><span class="small-number">LEVEL 02</span><span class="card-title-row"><h3>Colour Mission</h3><span class="play-label">PLAY</span></span><p>Paint the right colour.</p>${bestTimeLine('colour')}</span></button>
       <button class="quest-card card-find" data-screen="find"><span class="card-copy"><span class="small-number">LEVEL 03</span><span class="card-title-row"><h3>Tap &amp; Find</h3><span class="play-label">PLAY</span></span><p>Find what you hear.</p>${bestTimeLine('find')}</span></button>
       <button class="quest-card card-pairs" data-screen="pairs"><span class="card-copy"><span class="small-number">LEVEL 04</span><span class="card-title-row"><h3>Match Pairs</h3><span class="play-label">PLAY</span></span><p>Find the word twins.</p>${bestTimeLine('pairs')}</span></button>
+      <button class="quest-card card-sentence" data-screen="sentence"><span class="card-copy"><span class="small-number">LEVEL 05</span><span class="card-title-row"><h3>Make a Sentence</h3><span class="play-label">PLAY</span></span><p>Put the words in order.</p></span></button>
+      <button class="quest-card card-final" data-screen="final"><span class="card-copy"><span class="small-number">FINAL TEST</span><span class="card-title-row"><h3>Fox Final Mission</h3><span class="play-label">PLAY</span></span><p>Complete all 15 challenges!</p></span></button>
     </div>
     <div class="home-lower"><div class="progress-panel"><div class="progress-label"><span>Quest progress</span><span>${Math.min(stars, 9)} stars collected</span></div><div class="progress-track"><span style="width:${Math.min(stars * 10 + 12, 100)}%"></span></div></div><button class="reward-panel" data-screen="backpack"><h3>My Backpack</h3><p>See your game rewards →</p></button></div>`;
 }
 
 function renderWord() {
+  const block = wordBlockConfig[selectedWordBlock] || wordBlockConfig.school;
   if (wordMissionComplete) {
     clearWordHintCycle();
-    main.innerHTML = `<div class="game-board word-game">${screenHead('Build a Word', 'All ten words built — brilliant work!', '')}${completionPanel({ message: 'You built every vocabulary word and earned your reward.', replayId: 'wordPlayAgain', nextScreen: 'colour' })}</div>`;
+    main.innerHTML = `<div class="game-board word-game">${screenHead('Build a Word', `${block.title} complete — brilliant work!`, '')}${completionPanel({ message: `You built all ${wordRounds.length} words and earned your reward.`, replayId: 'wordPlayAgain', nextScreen: 'colour' })}</div>`;
     return;
   }
   const round = currentWordRound();
   if (!wordBank.length) resetWordRound();
   const reveal = wordCompleted ? 100 : (wordLetters.length / round.word.length) * 100;
+  const isObject = round.type === 'object';
+  const completedColourClass = round.type === 'colour' && wordCompleted ? ` is-colour-result colour-word-${round.word.toLowerCase()}` : '';
+  const completedColourStyle = round.type === 'colour' && wordCompleted ? ` style="--completed-word-colour:${round.colour}"` : '';
+  const prompt = isObject
+    ? `<span class="word-prompt-label">MAKE THIS WORD:</span><strong class="target-word${!wordHintVisible && !wordCompleted ? ' is-hidden' : ''}${wordCompleted ? ' is-completed' : ''}">${round.word}</strong>`
+    : `<span class="word-prompt-label">${round.type === 'colour' ? 'BUILD THE COLOUR' : 'BUILD THE NUMBER'}</span>${wordCompleted ? `<strong class="target-word is-completed${completedColourClass}"${completedColourStyle}>${round.word}</strong>` : ''}`;
+  const clue = isObject
+    ? `<div class="object-reveal" style="--reveal-progress:${reveal}%"><img src="${objectAsset(round.image)}" alt="${round.word}"><span class="reveal-cover" aria-hidden="true"></span></div>`
+    : round.type === 'colour'
+      ? `<div class="word-colour-clue" style="--word-clue-colour:${round.colour}" role="img" aria-label="Colour swatch"></div>`
+      : `<div class="word-number-clue" role="img" aria-label="Number ${round.digit}">${round.digit}</div>`;
   main.innerHTML = `
     <div class="game-board word-game">
-      ${screenHead('Build a Word', 'Tap the letters in the right order.', { type: 'word', key: round.word, label: `Hear ${round.word}` }, 'HEAR WORD')}
+      ${screenHead('Build a Word', `${block.title} · word ${wordRound + 1} of ${wordRounds.length}`, { type: 'word', key: round.word, label: `Hear ${round.word}` }, 'HEAR WORD')}
       ${challengeTimerPanel('word')}
-      <div class="word-layout${wordCompleted ? ' completed' : ''}${round.word.length > 7 ? ' long-word' : ''}">
-        <div class="word-prompt-line"><span class="word-prompt-label">MAKE THIS WORD:</span><strong class="target-word${!wordHintVisible && !wordCompleted ? ' is-hidden' : ''}${wordCompleted ? ' is-completed' : ''}">${round.word}</strong></div>
-        <div class="object-reveal" style="--reveal-progress:${reveal}%">
-          <img src="${objectAsset(round.image)}" alt="${round.word}"><span class="reveal-cover" aria-hidden="true"></span>
-        </div>
+      <div class="word-layout clue-${round.type}${wordCompleted ? ' completed' : ''}${round.word.length > 7 ? ' long-word' : ''}">
+        <div class="word-prompt-line">${prompt}</div>
+        ${clue}
         <div class="letter-row${wordCompleted ? ' word-complete' : ''}" id="chosenLetters" aria-label="Your word">
           ${wordLetters.map(letter => `<span class="tile chosen">${letter}</span>`).join('')}
           ${Array.from({ length: round.word.length - wordLetters.length }, () => '<span class="tile empty" aria-hidden="true"></span>').join('')}
@@ -758,8 +1035,8 @@ function renderWord() {
         <div class="letter-bank" aria-label="Letter choices">
           ${wordBank.map(item => `<button class="tile bank${usedLetterIds.includes(item.id) ? ' used' : ''}" data-letter-id="${item.id}" ${usedLetterIds.includes(item.id) || wordCompleted ? 'disabled' : ''}>${item.letter}</button>`).join('')}
         </div>
-        <div class="game-feedback success" aria-live="polite">${wordCompleted ? successMessages[wordRound % successMessages.length] : '&nbsp;'}</div>
-        <div class="word-actions">${wordCompleted ? '<button class="primary-btn next-btn" id="wordNext">NEXT</button>' : ''}<button class="secondary-btn" id="wordReset">START AGAIN</button></div>
+        <div class="game-feedback success" aria-live="polite">${wordCompleted && wordSuccessReady ? 'Great job!' : wordCompleted ? 'Listen…' : '&nbsp;'}</div>
+        <div class="word-actions">${wordCompleted && wordSuccessReady ? '<button class="primary-btn next-btn" id="wordNext">NEXT</button>' : ''}${selectedWordBlock === 'colours' ? '' : '<button class="secondary-btn" id="wordReset">START AGAIN</button>'}</div>
       </div>
     </div>`;
 }
@@ -802,7 +1079,9 @@ const colourRgb = {
   red: [237, 103, 92],
   blue: [77, 155, 221],
   yellow: [244, 200, 76],
-  green: [85, 185, 124]
+  green: [85, 185, 124],
+  orange: [239, 139, 52],
+  brown: [142, 86, 53]
 };
 
 function drawColourObject(canvas) {
@@ -898,12 +1177,215 @@ function renderPairs() {
     </div>`;
 }
 
+function renderSentence() {
+  if (sentenceMissionComplete) {
+    main.innerHTML = `<div class="game-board sentence-game">${screenHead('MAKE A SENTENCE', 'You built all eleven sentences!', '')}
+      <div class="mission-complete game-mission-complete sentence-complete" aria-live="polite">
+        <img class="completion-fox" src="assets%20images%20fox/Fox-happy.jpg" alt="Happy fox mascot">
+        <div class="completion-copy"><p>MISSION COMPLETE!</p><span>Wonderful reading! You put every sentence in order.</span></div>
+        <div class="complete-actions"><button class="primary-btn next-btn" id="sentencePlayAgain">PLAY AGAIN</button><button class="secondary-btn" data-screen="home">HOME</button></div>
+      </div></div>`;
+    return;
+  }
+  const round = currentSentenceRound();
+  const placedIds = new Set(sentenceSlots.filter(Boolean));
+  const clueSource = clue => clue.path || objectAsset(clue.image);
+  const clueMarkup = round.clues.map(clue => clue.colour
+    ? `<canvas class="sentence-clue-image" data-object-src="${clueSource(clue)}" data-object-colour="${clue.colour}" role="img" aria-label="${clue.label}"></canvas>`
+    : `<img class="sentence-clue-image" src="${clueSource(clue)}" alt="${clue.label}">`).join('');
+  main.innerHTML = `<div class="game-board sentence-game${round.words.length > 6 ? ' long-sentence' : ''}">
+    ${screenHead('MAKE A SENTENCE', 'Put the words in order.', '')}
+    <div class="sentence-progress" aria-label="Round ${sentenceRound + 1} of ${sentenceRounds.length}"><strong>${sentenceRound + 1} / ${sentenceRounds.length}</strong><span><i style="width:${((sentenceRound + (sentenceSolved ? 1 : 0)) / sentenceRounds.length) * 100}%"></i></span></div>
+    <div class="sentence-board">
+      <div class="sentence-clue${round.clues.length > 1 ? ' clue-pair' : ''}">${clueMarkup}</div>
+      <p class="sentence-area-label">BUILD THE SENTENCE</p>
+      <div class="sentence-slots${sentenceSolved ? ' is-correct' : ''}${sentenceWrong ? ' is-wrong' : ''}" aria-label="Sentence building slots">
+        ${sentenceSlots.map((tokenId, index) => {
+          const token = sentenceTokens.find(item => item.id === tokenId);
+          return `<button class="sentence-slot${token ? ' is-filled' : ''}" data-sentence-slot="${index}" ${sentenceSolved ? 'disabled' : ''} draggable="${Boolean(token && !sentenceSolved)}" aria-label="${token ? `${token.word}, position ${index + 1}. Tap to return it.` : `Empty position ${index + 1}`}">${token ? token.word : '<span aria-hidden="true"></span>'}</button>`;
+        }).join('')}
+      </div>
+      <div class="sentence-feedback${sentenceSuccessReady ? ' success' : sentenceWrong ? ' retry' : ''}" aria-live="polite">${sentenceSuccessReady ? '<strong>Great job!</strong><span aria-hidden="true">✓</span>' : sentenceSolved ? '<strong>Listen…</strong>' : sentenceWrong ? '<strong>Try again.</strong>' : '&nbsp;'}</div>
+      <p class="sentence-area-label">WORD CARDS</p>
+      <div class="sentence-bank" data-sentence-bank aria-label="Shuffled word cards">
+        ${sentenceTokens.map(token => `<button class="sentence-word-card${placedIds.has(token.id) ? ' is-used' : ''}" data-sentence-token="${token.id}" ${placedIds.has(token.id) || sentenceSolved ? 'disabled' : ''} draggable="${!placedIds.has(token.id) && !sentenceSolved}">${token.word}</button>`).join('')}
+      </div>
+      <div class="sentence-actions"><button class="secondary-btn sentence-back" id="sentenceBack" ${sentenceSolved || !sentencePlacementHistory.length ? 'disabled' : ''}>BACK</button>${sentenceSuccessReady ? `<button class="secondary-btn hear-sentence" id="sentenceHearAgain">HEAR AGAIN</button><button class="primary-btn next-btn" id="sentenceNext">NEXT</button>` : ''}</div>
+    </div>
+  </div>`;
+  document.querySelectorAll('.sentence-clue-image[data-object-colour]').forEach(drawColourObject);
+}
+
+const finalTaskTitle = type => ({
+  'listen-picture': 'LISTEN & FIND', 'listen-colour': 'COLOUR LISTENING', 'listen-number': 'NUMBER LISTENING',
+  'build-word': 'BUILD A WORD', sentence: 'MAKE A SENTENCE', 'reading-picture': 'READING', 'reading-group': 'READING CHALLENGE'
+}[type]);
+
+const finalChoicePicture = (choice, index) => choice.colour
+  ? `<canvas class="final-choice-image" data-object-src="${objectAsset(choice.image)}" data-object-colour="${choice.colour}" role="img" aria-label="Picture option ${index + 1}"></canvas>`
+  : `<img class="final-choice-image" src="${objectAsset(choice.image)}" alt="">`;
+
+const finalCanSubmit = question => {
+  if (finalSubmitted) return false;
+  if (['listen-picture', 'listen-colour', 'listen-number', 'reading-picture', 'reading-group'].includes(question.type)) return finalSelection !== null;
+  return finalAnswerIds.length === question.target.length;
+};
+
+const finalAnswerIsCorrect = question => {
+  if (['listen-picture', 'listen-colour', 'listen-number', 'reading-picture', 'reading-group'].includes(question.type)) return finalSelection === question.correctAnswer;
+  const answer = finalTokenValues();
+  return answer.length === question.correctAnswer.length && answer.every((value, index) => value === question.correctAnswer[index]);
+};
+
+const finalQuestionClue = question => {
+  if (question.type === 'build-word') {
+    if (question.digit) return `<div class="final-number-clue" aria-label="Number ${question.digit}">${question.digit}</div>`;
+    return `<div class="final-object-clue"><img src="${objectAsset(question.image)}" alt="Visual clue"></div>`;
+  }
+  if (question.type === 'sentence') {
+    return `<div class="final-sentence-clues${question.clues.length > 1 ? ' is-pair' : ''}">${question.clues.map(clue => clue.colour
+      ? `<canvas data-object-src="${objectAsset(clue.image)}" data-object-colour="${clue.colour}" role="img" aria-label="${clue.label}"></canvas>`
+      : `<img src="${objectAsset(clue.image)}" alt="${clue.label}">`).join('')}</div>`;
+  }
+  return '';
+};
+
+const renderFinalChoiceTask = question => {
+  if (question.type === 'listen-colour') {
+    return `<div class="final-colour-grid" aria-label="Colour choices">${finalChoiceOrder.map((choice, index) => `<button class="final-colour-choice${finalSelection === choice.id ? ' selected' : ''}" data-final-choice="${choice.id}" style="--choice-colour:${choice.colour}" aria-label="Colour option ${index + 1}" ${finalSubmitted ? 'disabled' : ''}><span aria-hidden="true"></span></button>`).join('')}</div>`;
+  }
+  if (question.type === 'listen-number') {
+    return `<div class="final-number-grid" aria-label="Number choices">${finalChoiceOrder.map(choice => `<button class="final-number-choice${finalSelection === choice ? ' selected' : ''}" data-final-choice="${choice}" ${finalSubmitted ? 'disabled' : ''}>${choice}</button>`).join('')}</div>`;
+  }
+  if (question.type === 'reading-group') {
+    return `<div class="final-group-grid" aria-label="Picture groups">${finalChoiceOrder.map((choice, index) => `<button class="final-picture-group${finalSelection === choice.id ? ' selected' : ''}" data-final-choice="${choice.id}" aria-label="Picture group ${index + 1}" ${finalSubmitted ? 'disabled' : ''}>${choice.images.map(image => `<img src="${objectAsset(image)}" alt="">`).join('')}</button>`).join('')}</div>`;
+  }
+  return `<div class="final-picture-grid" aria-label="Picture choices">${finalChoiceOrder.map((choice, index) => `<button class="final-picture-choice${finalSelection === choice.id ? ' selected' : ''}" data-final-choice="${choice.id}" aria-label="Picture option ${index + 1}" ${finalSubmitted ? 'disabled' : ''}>${finalChoicePicture(choice, index)}</button>`).join('')}</div>`;
+};
+
+const renderFinalBuildTask = question => {
+  const placedIds = new Set(finalAnswerIds);
+  const answer = finalTokenValues();
+  return `${finalQuestionClue(question)}
+    <div class="final-build-answer" aria-label="Your answer">${answer.map((letter, index) => `<button data-final-answer-index="${index}" ${finalSubmitted ? 'disabled' : ''}>${letter}</button>`).join('')}${Array.from({ length: question.target.length - answer.length }, () => '<span aria-hidden="true"></span>').join('')}</div>
+    <div class="final-letter-bank" aria-label="Scrambled letters">${finalTokens.map(token => `<button data-final-token-id="${token.id}" ${placedIds.has(token.id) || finalSubmitted ? 'disabled' : ''}>${token.value}</button>`).join('')}</div>`;
+};
+
+const renderFinalSentenceTask = question => {
+  const placedIds = new Set(finalAnswerIds);
+  const answer = finalTokenValues();
+  return `${finalQuestionClue(question)}
+    <div class="final-sentence-answer" aria-label="Your sentence">${answer.map(value => `<span>${value}</span>`).join('')}${Array.from({ length: question.target.length - answer.length }, () => '<i aria-hidden="true"></i>').join('')}</div>
+    <div class="final-sentence-bank" aria-label="Scrambled word cards">${finalTokens.map(token => `<button data-final-token-id="${token.id}" ${placedIds.has(token.id) || finalSubmitted ? 'disabled' : ''}>${token.value}</button>`).join('')}</div>`;
+};
+
+function renderFinalResult() {
+  const result = getFinalResult(finalScore);
+  const breakdown = Object.keys(finalCategoryLabels).map(key => `<div><span>${finalCategoryLabels[key]}</span><strong>${finalBreakdown[key]} / 3</strong></div>`).join('');
+  main.innerHTML = `<div class="game-board final-game final-result ${result.band}">
+    ${screenHead('FOX FINAL MISSION', 'Your final adventure is complete.', '')}
+    <section class="final-result-card" aria-live="polite">
+      <img src="assets%20images%20rewards/${result.image}" alt="Fox result reward">
+      <div class="final-result-copy"><small>FINAL SCORE</small><strong class="final-score">${finalScore} / 15</strong>${result.grade ? `<span class="final-grade">${result.grade}</span>` : ''}<h2>${result.title}</h2><p>${result.message}</p></div>
+      <div class="final-breakdown" aria-label="Teacher breakdown"><h3>MISSION BREAKDOWN</h3>${breakdown}</div>
+      <div class="final-result-actions"><button class="primary-btn" id="finalPlayAgain">${result.replayLabel}</button><button class="secondary-btn" data-screen="home">HOME</button></div>
+    </section>
+  </div>`;
+}
+
+function renderFinalIntro() {
+  main.innerHTML = `<div class="game-board final-game final-intro">
+    <section class="final-intro-card" aria-labelledby="finalIntroTitle">
+      <div class="final-intro-heading"><p class="kicker">FOX SCHOOL QUEST</p><h1 id="finalIntroTitle">FOX FINAL MISSION</h1><p>Are you ready for your final adventure?</p></div>
+      <div class="final-intro-media">
+        <video class="final-intro-video" autoplay playsinline preload="auto" poster="assets%20images%20rewards/fox-grade-5.png.png">
+          <source src="assets%20video%20final-mission/fox-final-mission-intro.mp4.mp4" type="video/mp4">
+        </video>
+        <img class="final-intro-fallback" src="assets%20images%20rewards/fox-grade-5.png.png" alt="Fox Final Mission" hidden>
+      </div>
+      <div class="final-intro-actions">
+        <button class="secondary-btn final-replay" id="finalIntroReplay" type="button" hidden>REPLAY</button>
+        <button class="primary-btn final-start" id="finalStartMission" type="button">START MISSION</button>
+      </div>
+    </section>
+  </div>`;
+
+  const video = document.querySelector('.final-intro-video');
+  const source = video.querySelector('source');
+  const fallback = document.querySelector('.final-intro-fallback');
+  const replay = document.getElementById('finalIntroReplay');
+  const showFallback = () => {
+    video.hidden = true;
+    fallback.hidden = false;
+    replay.hidden = true;
+    musicController.play();
+  };
+  video.addEventListener('play', () => musicController.pause());
+  video.addEventListener('ended', () => {
+    replay.hidden = false;
+    musicController.play();
+  });
+  video.addEventListener('error', showFallback);
+  source.addEventListener('error', showFallback);
+  video.play().catch(() => {
+    // Autoplay policies may require another child interaction; START remains available.
+    musicController.play();
+  });
+}
+
+function renderFinalMission() {
+  if (finalIntroVisible) { renderFinalIntro(); return; }
+  if (finalQuestionIndex >= finalMissionQuestions.length) { renderFinalResult(); return; }
+  const question = currentFinalQuestion();
+  const listening = question.type.startsWith('listen-');
+  const choiceTask = ['listen-picture', 'listen-colour', 'listen-number', 'reading-picture', 'reading-group'].includes(question.type);
+  const task = choiceTask ? renderFinalChoiceTask(question) : question.type === 'build-word' ? renderFinalBuildTask(question) : renderFinalSentenceTask(question);
+  main.innerHTML = `<div class="game-board final-game ${question.type}">
+    ${screenHead('FOX FINAL MISSION', 'Complete all 15 challenges!', '')}
+    <div class="final-progress" aria-label="Question ${finalQuestionIndex + 1} of 15"><strong>${finalQuestionIndex + 1} / 15</strong><span><i style="width:${((finalQuestionIndex + 1) / 15) * 100}%"></i></span></div>
+    <section class="final-question-card" data-final-question="${question.id}">
+      <div class="final-task-heading"><small>${finalTaskTitle(question.type)}</small><h2>${question.prompt}</h2>${listening ? '<button class="sound-btn final-hear" id="finalHearAgain">HEAR AGAIN</button>' : ''}</div>
+      <div class="final-task-body">${task}</div>
+      <div class="final-submit-state" aria-live="polite">${finalSubmitted ? 'Answer saved.' : '&nbsp;'}</div>
+      <div class="final-actions">${question.type === 'sentence' ? `<button class="secondary-btn final-back" id="finalBack" ${finalSubmitted || !finalAnswerIds.length ? 'disabled' : ''}>BACK</button>` : ''}<button class="primary-btn" id="finalSubmit" ${finalCanSubmit(question) ? '' : 'disabled'}>SUBMIT</button>${finalSubmitted ? '<button class="primary-btn next-btn" id="finalNext">NEXT</button>' : ''}</div>
+    </section>
+  </div>`;
+  document.querySelectorAll('.final-game canvas[data-object-colour]').forEach(drawColourObject);
+  announceFinalQuestion();
+}
+
+const announceFinalQuestion = () => {
+  const question = currentFinalQuestion();
+  if (!question?.type.startsWith('listen-') || finalAnnouncedQuestion === finalQuestionIndex || finalSubmitted) return;
+  const index = finalQuestionIndex;
+  const token = ++announcementToken;
+  finalAnnouncedQuestion = index;
+  setTimeout(() => {
+    if (token === announcementToken && currentScreen === 'final' && finalQuestionIndex === index && !finalSubmitted) voiceController.play(wordVoice(question.audio));
+  }, 250);
+};
+
+const submitFinalAnswer = () => {
+  const question = currentFinalQuestion();
+  if (!finalCanSubmit(question)) return;
+  voiceController.stop();
+  const correct = finalAnswerIsCorrect(question);
+  if (correct) {
+    finalScore += 1;
+    finalBreakdown[question.category] += 1;
+  }
+  finalResults.push({ id: question.id, category: question.category, correct });
+  finalSubmitted = true;
+  renderFinalMission();
+};
+
 function renderBackpack() {
   const rewards = [
     { key: 'word', title: 'Build a Word', image: 'great-job.jpg' },
     { key: 'colour', title: 'Colour Mission', image: 'star-reward.jpg' },
     { key: 'find', title: 'Tap & Find', image: 'confetti-fox.jpg' },
-    { key: 'pairs', title: 'Match Pairs', image: 'completed%20-check.jpg' }
+    { key: 'pairs', title: 'Match Pairs', image: 'completed%20-check.jpg' },
+    { key: 'sentence', title: 'Make a Sentence', image: 'fox-hug-star.jpg' }
   ];
   main.innerHTML = `
     <div class="game-board backpack-game">
@@ -970,34 +1452,43 @@ const replayVoice = button => {
 };
 
 const handleWordLetter = button => {
-  if (wordCompleted) return;
+  if (wordCompleted || wordResetting) return;
   const item = wordBank.find(candidate => candidate.id === button.dataset.letterId);
   const target = currentWordRound().word;
   if (!item) return;
   if (item.letter !== target[wordLetters.length]) {
+    const roundAtMistake = wordRound;
+    const previousBankOrder = wordBank.map(letter => letter.letter).join('');
+    wordResetting = true;
     button.classList.add('shake');
-    notify('Try the next letter');
+    document.querySelector('.word-layout')?.classList.add('word-resetting');
+    notify('Try again from the beginning');
     playRetryFeedback();
-    setTimeout(() => button.classList.remove('shake'), 400);
+    setTimeout(() => {
+      if (currentScreen !== 'word' || wordRound !== roundAtMistake || wordCompleted || !wordResetting) return;
+      resetWordRound(previousBankOrder);
+      renderWord();
+      startWordHintCycle();
+    }, 420);
     return;
   }
   wordLetters.push(item.letter);
   usedLetterIds.push(item.id);
   if (wordLetters.length === target.length) {
+    const completedRound = wordRound;
     wordCompleted = true;
+    wordSuccessReady = false;
     clearWordHintCycle();
     wordHintVisible = true;
     cancelPendingAnnouncement();
     addStar();
-    let completedMission = false;
-    if (activeGameMode === 'timed' && wordRound === wordRounds.length - 1) {
-      finishChallenge('word');
-      wordMissionComplete = true;
-      markGameComplete('word');
-      completedMission = true;
-    }
+    if (activeGameMode === 'timed' && wordRound === wordRounds.length - 1) finishChallenge('word');
     renderWord();
-    voiceController.playSequence(completedMission ? [wordVoice(target), completionVoice()] : [wordVoice(target)]);
+    voiceController.playSequence([wordVoice(target), feedbackVoice('greatJob')]).then(() => {
+      if (currentScreen !== 'word' || wordRound !== completedRound || !wordCompleted) return;
+      wordSuccessReady = true;
+      renderWord();
+    });
     return;
   }
   renderWord();
@@ -1078,20 +1569,176 @@ const handlePairCard = button => {
   }, 650);
 };
 
+const checkSentence = () => {
+  if (sentenceSlots.some(tokenId => !tokenId) || sentenceSolved) return;
+  const round = currentSentenceRound();
+  const builtWords = sentenceSlots.map(tokenId => sentenceTokens.find(token => token.id === tokenId)?.word);
+  if (builtWords.every((word, index) => word === round.words[index])) {
+    const completedRound = sentenceRound;
+    sentenceSolved = true;
+    sentenceWrong = false;
+    sentenceSuccessReady = false;
+    addStar();
+    renderSentence();
+    voiceController.playSequence([sentenceVoice(round), feedbackVoice('greatJob')]).then(() => {
+      if (currentScreen !== 'sentence' || sentenceRound !== completedRound || !sentenceSolved) return;
+      sentenceSuccessReady = true;
+      renderSentence();
+    });
+    return;
+  }
+  sentenceWrong = true;
+  renderSentence();
+  playRetryFeedback();
+};
+
+const placeSentenceToken = (tokenId, slotIndex) => {
+  if (sentenceSolved || !sentenceTokens.some(token => token.id === tokenId)) return;
+  const sourceIndex = sentenceSlots.indexOf(tokenId);
+  const displacedToken = sentenceSlots[slotIndex];
+  sentencePlacementHistory = sentencePlacementHistory.filter(id => id !== tokenId && id !== displacedToken);
+  if (sourceIndex >= 0) sentenceSlots[sourceIndex] = displacedToken || null;
+  sentenceSlots[slotIndex] = tokenId;
+  sentencePlacementHistory.push(tokenId);
+  sentenceWrong = false;
+  renderSentence();
+  checkSentence();
+};
+
+const removeSentenceToken = slotIndex => {
+  if (sentenceSolved || !sentenceSlots[slotIndex]) return;
+  const tokenId = sentenceSlots[slotIndex];
+  sentenceSlots[slotIndex] = null;
+  sentencePlacementHistory = sentencePlacementHistory.filter(id => id !== tokenId);
+  sentenceWrong = false;
+  renderSentence();
+};
+
+const undoSentenceToken = () => {
+  if (sentenceSolved) return;
+  while (sentencePlacementHistory.length) {
+    const tokenId = sentencePlacementHistory.pop();
+    const slotIndex = sentenceSlots.indexOf(tokenId);
+    if (slotIndex < 0) continue;
+    sentenceSlots[slotIndex] = null;
+    sentenceWrong = false;
+    renderSentence();
+    return;
+  }
+};
+
 document.addEventListener('click', event => {
   const screenButton = event.target.closest('[data-screen]');
   if (screenButton) { setScreen(screenButton.dataset.screen); return; }
+  if (event.target.closest('#finalStartMission')) {
+    const video = document.querySelector('.final-intro-video');
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+    finalIntroVisible = false;
+    resetFinalMission();
+    musicController.play();
+    renderFinalMission();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+  if (event.target.closest('#finalIntroReplay')) {
+    const video = document.querySelector('.final-intro-video');
+    const replay = document.getElementById('finalIntroReplay');
+    if (!video || video.hidden) return;
+    musicController.pause();
+    video.currentTime = 0;
+    video.play().then(() => { replay.hidden = true; }).catch(() => { replay.hidden = false; musicController.play(); });
+    return;
+  }
+  if (event.target.closest('#finalPlayAgain')) { resetFinalMission(); musicController.play(); renderFinalMission(); return; }
+  if (event.target.closest('#finalHearAgain')) {
+    cancelPendingAnnouncement();
+    voiceController.play(wordVoice(currentFinalQuestion().audio));
+    return;
+  }
+  const finalChoice = event.target.closest('[data-final-choice]');
+  if (finalChoice && currentScreen === 'final' && !finalSubmitted) {
+    finalSelection = finalChoice.dataset.finalChoice;
+    renderFinalMission();
+    return;
+  }
+  const finalToken = event.target.closest('[data-final-token-id]');
+  if (finalToken && currentScreen === 'final' && !finalSubmitted) {
+    if (!finalAnswerIds.includes(finalToken.dataset.finalTokenId)) finalAnswerIds.push(finalToken.dataset.finalTokenId);
+    renderFinalMission();
+    return;
+  }
+  const finalAnswerTile = event.target.closest('[data-final-answer-index]');
+  if (finalAnswerTile && currentScreen === 'final' && !finalSubmitted) {
+    finalAnswerIds.splice(Number(finalAnswerTile.dataset.finalAnswerIndex), 1);
+    renderFinalMission();
+    return;
+  }
+  if (event.target.closest('#finalBack')) {
+    if (currentScreen === 'final' && !finalSubmitted) finalAnswerIds.pop();
+    renderFinalMission();
+    return;
+  }
+  if (event.target.closest('#finalSubmit')) { submitFinalAnswer(); return; }
+  if (event.target.closest('#finalNext')) {
+    if (!finalSubmitted) return;
+    finalQuestionIndex += 1;
+    if (finalQuestionIndex < finalMissionQuestions.length) prepareFinalQuestion();
+    renderFinalMission();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+  const wordBlockButton = event.target.closest('[data-word-block]');
+  if (wordBlockButton) {
+    selectedWordBlock = wordBlockButton.dataset.wordBlock;
+    activeGameMode = null;
+    renderModeChoice('word');
+    return;
+  }
   const modeButton = event.target.closest('[data-game-mode]');
   if (modeButton) { startGameMode(modeButton.dataset.game, modeButton.dataset.gameMode); return; }
   if (event.target.closest('#wordPlayAgain')) { restartCurrentGame('word'); return; }
   if (event.target.closest('#colourPlayAgain')) { restartCurrentGame('colour'); return; }
   if (event.target.closest('#findPlayAgain')) { restartCurrentGame('find'); return; }
   if (event.target.closest('#pairPlayAgain')) { restartCurrentGame('pairs'); return; }
-  if (activeGameMode === 'timed' && timeChallenge.phase !== 'running') return;
+  if (event.target.closest('#sentencePlayAgain')) { resetSentenceMission(); musicController.play(); renderSentence(); return; }
+  if (event.target.closest('#wordChooseWords')) {
+    leaveGameMode();
+    selectedWordBlock = null;
+    render();
+    return;
+  }
+  if (activeGameMode === 'timed' && timeChallenge.phase !== 'running' && !event.target.closest('#wordNext')) return;
   const voiceButton = event.target.closest('[data-voice-type]');
   if (voiceButton) { replayVoice(voiceButton); return; }
   const letterButton = event.target.closest('[data-letter-id]');
   if (letterButton) { handleWordLetter(letterButton); return; }
+  const sentenceToken = event.target.closest('[data-sentence-token]');
+  if (sentenceToken) {
+    const emptyIndex = sentenceSlots.indexOf(null);
+    if (emptyIndex >= 0) placeSentenceToken(sentenceToken.dataset.sentenceToken, emptyIndex);
+    return;
+  }
+  const sentenceSlot = event.target.closest('[data-sentence-slot]');
+  if (sentenceSlot) { removeSentenceToken(Number(sentenceSlot.dataset.sentenceSlot)); return; }
+  if (event.target.closest('#sentenceBack')) { undoSentenceToken(); return; }
+  if (event.target.closest('#sentenceHearAgain')) { voiceController.play(sentenceVoice(currentSentenceRound())); return; }
+  if (event.target.closest('#sentenceNext')) {
+    if (!sentenceSuccessReady) return;
+    if (sentenceRound === sentenceRounds.length - 1) {
+      sentenceMissionComplete = true;
+      markGameComplete('sentence');
+      renderSentence();
+      playCompletionFeedback();
+    } else {
+      sentenceRound += 1;
+      resetSentenceRound();
+      renderSentence();
+    }
+    return;
+  }
   if (event.target.closest('#wordReset')) {
     wordAnnouncedRound = -1;
     resetWordRound();
@@ -1101,6 +1748,7 @@ document.addEventListener('click', event => {
     return;
   }
   if (event.target.closest('#wordNext')) {
+    if (!wordSuccessReady) return;
     if (wordRound === wordRounds.length - 1) {
       finishChallenge('word');
       wordMissionComplete = true;
@@ -1178,6 +1826,35 @@ document.addEventListener('click', event => {
   const pairCard = event.target.closest('[data-pair-key]');
   if (pairCard) { handlePairCard(pairCard); return; }
   if (event.target.closest('#pairNextSet')) { pairSet += 1; resetPairSet(); renderPairs(); return; }
+});
+
+document.addEventListener('dragstart', event => {
+  if (currentScreen !== 'sentence' || sentenceSolved) return;
+  const tokenCard = event.target.closest('[data-sentence-token]');
+  const slot = event.target.closest('[data-sentence-slot]');
+  const tokenId = tokenCard?.dataset.sentenceToken || sentenceSlots[Number(slot?.dataset.sentenceSlot)];
+  if (!tokenId) { event.preventDefault(); return; }
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/plain', tokenId);
+});
+
+document.addEventListener('dragover', event => {
+  if (currentScreen === 'sentence' && event.target.closest('[data-sentence-slot], [data-sentence-bank]')) event.preventDefault();
+});
+
+document.addEventListener('drop', event => {
+  if (currentScreen !== 'sentence' || sentenceSolved) return;
+  const tokenId = event.dataTransfer.getData('text/plain');
+  const slot = event.target.closest('[data-sentence-slot]');
+  const bank = event.target.closest('[data-sentence-bank]');
+  if (slot) {
+    event.preventDefault();
+    placeSentenceToken(tokenId, Number(slot.dataset.sentenceSlot));
+  } else if (bank) {
+    event.preventDefault();
+    const sourceIndex = sentenceSlots.indexOf(tokenId);
+    if (sourceIndex >= 0) removeSentenceToken(sourceIndex);
+  }
 });
 
 document.getElementById('soundToggle').addEventListener('click', () => {
