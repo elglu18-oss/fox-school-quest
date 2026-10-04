@@ -1185,7 +1185,7 @@
 .icon-final:after{content:'';position:absolute;width:12px;height:10px;left:9px;top:18px;border-left:4px solid currentColor;border-right:4px solid currentColor;transform:skew(-10deg)}
 .nav-final{margin-top:7px!important;border:2px solid #f2cc62!important;background:#fff7d5!important;color:#9a6d20!important}
 .nav-final.active{background:#7a55a6!important;color:#fff!important;border-color:#7a55a6!important;box-shadow:0 5px 0 #58377e!important}
-.is-home .card-final{background:linear-gradient(145deg,rgba(86,61,145,.88),rgba(201,76,126,.76)),url('assets%20images%20rewards/fox-grade-5.png.png') center 18%/cover no-repeat!important}
+.is-home .card-final{background-color:#fff8dc!important;background-image:url('assets%20images%20rewards/fox-grade-5.png.png')!important;background-position:center 18%!important;background-size:cover!important;background-repeat:no-repeat!important}
 .is-home .card-final .card-copy h3{font-size:24px!important;white-space:normal!important}
 
 .final-game{max-width:1080px}
